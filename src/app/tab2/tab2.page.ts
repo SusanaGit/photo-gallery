@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonHeader, IonToolbar, IonTitle, IonContent, IonFab, IonFabButton, IonIcon} from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import { PhotoService } from '../services/photo.service';
 
 @Component({
   selector: 'app-tab2',
@@ -11,6 +12,10 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(public photoService: PhotoService) {}
+
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
+  }
 
 }
