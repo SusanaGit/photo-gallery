@@ -25,6 +25,9 @@ export class PhotoService {
       webviewPath: capturedPhoto.webPath!
     });
   }
+
+  private async savePicture(photo: Photo) { }
+
 }
 
 export interface UserPhoto {
