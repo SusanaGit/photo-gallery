@@ -47,6 +47,14 @@ export class PhotoService {
       directory: Directory.Data
     });
 
+    if (this.platform.is('hybrid')) {
+      // Display the new image by rewriting the 'file://' path to HTTP
+      // Details: https://ionicframework.com/docs/building/webview#file-protocol
+      return {
+        filepath: savedFile.uri
+      };
+    }
+
     // Use webPath to display the new image instead of base64 since it's
     // already loaded into memory
     return {
