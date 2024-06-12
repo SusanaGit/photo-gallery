@@ -10,7 +10,7 @@ import {
   IonGrid, IonRow, IonCol, IonImg
 } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
-import { PhotoService } from '../services/photo.service';
+import { PhotoService , UserPhoto } from '../services/photo.service';
 import {NgForOf} from "@angular/common";
 import { ActionSheetController } from "@ionic/angular";
 
