@@ -12,6 +12,7 @@ import {
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { PhotoService } from '../services/photo.service';
 import {NgForOf} from "@angular/common";
+import { ActionSheetController } from "@ionic/angular";
 
 @Component({
   selector: 'app-tab2',
@@ -22,7 +23,8 @@ import {NgForOf} from "@angular/common";
 })
 export class Tab2Page implements OnInit {
 
-  constructor(public photoService: PhotoService) {}
+  constructor(public photoService: PhotoService,
+              public actionSheetController: ActionSheetController) {}
 
   async ngOnInit() {
     await this.photoService.loadSaved();
