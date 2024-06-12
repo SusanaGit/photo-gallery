@@ -70,16 +70,19 @@ export class PhotoService {
     const { value } = await Preferences.get({ key: this.PHOTO_STORAGE });
     this.photos = (value ? JSON.parse(value) : []) as UserPhoto[];
 
-    // Display the photo by reading into base64 format
-    for (let photo of this.photos) {
-      // Read each saved photo's data from the Filesystem
-      const readFile = await Filesystem.readFile({
-        path: photo.filepath,
-        directory: Directory.Data,
-      });
-
-      // Web platform only: Load the photo as base64 data
-      photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
+    // Easiest way to detect when running on the web:
+    // “when the platform is NOT hybrid, do this”
+    if (!this.platform.is('hybrid')) {
+      // Display the photo by reading into base64 format
+      for (let photo of this.photos) {
+        // Read each saved photo's data from the Filesystem
+        const readFile = await Filesystem.readFile({
+          path: photo.filepath,
+          directory: Directory.Data,
+        });
+        // Web platform only: Load the photo as base64 data
+        photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
+      }
     }
   }
 
