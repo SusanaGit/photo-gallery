@@ -33,4 +33,7 @@ export class Tab2Page implements OnInit {
   addPhotoToGallery() {
     this.photoService.addNewToGallery();
   }
+
+  public async showActionSheet(photo: UserPhoto, position: number) {
+  }
 }
